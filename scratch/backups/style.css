@@ -1,0 +1,69 @@
+body {
+    background: #fcfcfc;
+    color: #555;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  .container{
+    overflow: auto;
+    max-width: 800px;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #c6d6c6
+  }
+
+  .title {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    margin-top: 00px;
+    margin-bottom: 0px;
+    padding-top: 100px;
+    margin-left: 175px;
+  }
+
+  h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 175px;
+  }
+
+  div.title>img {
+        position: relative;
+        border-radius: 60%;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+  }
+
+  .summary {
+    padding: 20px;
+    
+    p {
+      font-size: 1.6rem;
+      letter-spacing: .2rem;
+    }
+  }
+  
+  
+  .work-experience {
+    padding: 20px;
+    
+    .experience-title {
+      margin-top: 50px;
+    }
+    
+    .experience-summary {
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+    
+    p {
+      font-size: 1.6rem;
+      letter-spacing: .2rem;
+    }
+  }

@@ -1,0 +1,23 @@
+initialize Docker container
+
+docker run -p 8000:8000 amazon/dynamodb-local
+
+create View_Counter table
+
+aws dynamodb --endpoint-url http://localhost:8000 create-table --table-name View_Counter --attribute-definitions AttributeName=Resource,AttributeType=S --key-schema AttributeName=Resource,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --table-class STANDARD --region us-east-1 --profile personal
+
+confirm table is ready
+
+aws dynamodb describe-table --endpoint-url http://localhost:8000 --table-name View_Counter --region us-east-1
+
+Update table
+
+aws dynamodb put-item  --table-name ViewCounter --item file://initialData.json --region us-east-1
+
+read from table
+
+aws dynamodb get-item --endpoint-url http://localhost:8000 --consistent-read --table-name View_Counter --key '{\"Resource\": {\"S\": \"Resume\"}}' --region us-east-1
+
+aws dynamodb create-table --table-name Music --attribute-definitions AttributeName=Artist,AttributeType=S AttributeName=SongTitle,AttributeType=S --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --table-class STANDARD --region us-east-1 --profile personal
+
+aws dynamodb describe-table --endpoint-url http://localhost:8000 --table-name Music --region us-east-1 --profile personal

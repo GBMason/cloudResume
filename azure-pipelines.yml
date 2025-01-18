@@ -1,0 +1,22 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - src/staticSite
+
+steps:
+  - task: S3Upload@1
+    displayName: 'Update S3'
+    inputs:
+      awsCredentials: 'Deploy'
+      regionName: 'us-east-1'
+      bucketName: 'garethbmason.com'
+      sourceFolder: 'src/staticSite'
+      globExpressions: '**'

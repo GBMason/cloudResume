@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: '
+
+  Stand up a DynamoDB to track view count and Lambda function to interact with DB
+
+  '
+Resources:
+  ViewCounter:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: ViewCounter
+      AttributeDefinitions:
+      - AttributeName: Resource
+        AttributeType: S
+      KeySchema:
+      - AttributeName: Resource
+        KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+      ProvisionedThroughput:
+        ReadCapacityUnits: 0
+        WriteCapacityUnits: 0
+  queryDynamoDB:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: queryDynamoDB
+      Handler: app.lambda_handler
+      Runtime: python3.10
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        GetViewCount:
+          Type: Api
+          Properties:
+            Path: /viewcount
+            Method: get
+    Metadata:
+      SamResourceId: queryDynamoDB

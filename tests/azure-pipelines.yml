@@ -1,0 +1,52 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+##trigger:
+##- none
+
+stages:
+  - stage: CI_Checks
+    jobs:
+    - job: 'Lint_and_Test_the_Code'
+      pool:
+        vmImage: windows-latest
+      strategy:
+        matrix:
+          Pyhton310:
+            python.version: '3.10'
+      steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '$(python.version)'
+        displayName: 'Use Python $(python.version)'
+
+      - script: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install pylint
+          pip install -r $(Build.Repository.LocalPath)\SAM\Lambda\requirements.txt
+          pip install 'moto[ec2,s3,all]'
+        displayName: 'Initial SetUp'
+  
+      - pwsh: | 
+          $results = pylint ".\SAM\Lambda\app.py" --disable=C0114,C0115,C0116,E0110,E1101,E1123,R0801,C0103,W0613,W0612
+          write-output($results)
+          $pattern = "(?<=rated at )(\d+\.\d+)(?=/10)"
+          $match = [regex]::Match($results, $pattern)
+          $score = $match.Groups[1].Value
+          $score = [int]$score
+          write-output($score)
+          if ($score -gt '6'){
+            echo("looks good")
+            exit 0
+          }else{
+            echo("fix your code")
+            exit 1
+          }
+        displayName: 'Run code quality tests (Pylint)'
+
+      - script: |
+
+      displayName: 'Test the code'
