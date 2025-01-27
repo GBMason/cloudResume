@@ -5,7 +5,7 @@ on:
     branches:
     - main
     paths:
-      - src/staticSite/*
+      - 'src/staticSite/**'
 
 jobs:
   deploy:
