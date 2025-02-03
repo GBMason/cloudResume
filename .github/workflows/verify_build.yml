@@ -56,6 +56,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - run: python -m pip install --upgrade pip
+      - run: pip install pytest
+      - run: pip install -r ".\src\SAM\Lambda\requirements.txt"
+      - run: pip install moto
       - run: |
           Copy-Item ".\tests\unit\test_app.py" -Destination ".\src\SAM\Lambda\test_app.py"
           pytest -v .\src\SAM\Lambda\test_app.py
