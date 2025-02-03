@@ -57,7 +57,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          Copy-Item "${GITHUB_WORKSPACE}\tests\unit\test_app.py" -Destination "${GITHUB_WORKSPACE}\src\SAM\Lambda\test_app.py"
+          Copy-Item ".\tests\unit\test_app.py" -Destination ".\src\SAM\Lambda\test_app.py"
           pytest -v .\src\SAM\Lambda\test_app.py
         shell: pwsh
 
