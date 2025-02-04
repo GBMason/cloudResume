@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened]
     paths:
-      - 'src/staticSite/SAM/**'
+      - 'src/SAM/**'
 
 jobs:
   lint:
