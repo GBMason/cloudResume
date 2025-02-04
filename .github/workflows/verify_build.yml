@@ -16,9 +16,10 @@ on:
         description: 'Test scenario tags'
         required: false
         type: boolean
-  push:
+  pull_request:
     branches:
       - main
+    types: [opened]
     paths:
       - 'src/staticSite/SAM/**'
 
