@@ -17,8 +17,6 @@ on:
         required: false
         type: boolean
   pull_request:
-    branches:
-      - main
     types: [opened]
     paths:
       - 'src/staticSite/SAM/**'
