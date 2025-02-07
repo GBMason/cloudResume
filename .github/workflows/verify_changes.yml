@@ -23,8 +23,10 @@ jobs:
     permissions:
           pull-requests: write
     steps:
-      - name: Create plan
-        uses: actions/checkout@v4, actions/setup-python@v3, aws-actions/setup-sam@v2, aws-actions/configure-aws-credentials@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v3
+      - uses: aws-actions/setup-sam@v2
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.ADMIN_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.ADMIN_AWS_SECRET_ACCESS_KEY }}
