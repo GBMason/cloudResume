@@ -31,7 +31,8 @@ jobs:
           aws-access-key-id: ${{ secrets.ADMIN_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.ADMIN_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - run: | 
+      - run: |
+          ls -d */
           cd /src/SAM/
           sam deploy --no-execute-changeset --template-file /src/SAM/template.yml --config-file /src/SAM/samconfig.toml --stack-name sam-backend
 
