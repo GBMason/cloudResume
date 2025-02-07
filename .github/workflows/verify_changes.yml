@@ -33,7 +33,9 @@ jobs:
           aws-region: us-east-1
       - run: |
           ls -d */
-          cd /src/SAM/
+          cd src/
+          ls -d */
+          cd /SAM/
           sam deploy --no-execute-changeset --template-file /src/SAM/template.yml --config-file /src/SAM/samconfig.toml --stack-name sam-backend
 
       - name: Post plan to PR
