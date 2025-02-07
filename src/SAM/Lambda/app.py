@@ -15,7 +15,7 @@ def lambda_handler(event, context):
         },
     ExpressionAttributeValues = {
             ':increase': {
-                'N': '1'
+                'N': '2'
             },
         },
     UpdateExpression = 'SET #Views = #Views + :increase'
