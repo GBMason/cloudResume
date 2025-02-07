@@ -32,10 +32,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.ADMIN_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - run: |
-          ls -d */
-          cd src/
-          ls -d */
-          cd SAM/
+          cd src/SAM
           sam deploy --no-execute-changeset --stack-name sam-backend
 
       - name: Post plan to PR
