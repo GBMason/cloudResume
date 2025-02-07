@@ -38,5 +38,5 @@ jobs:
       - name: Post plan to PR
         uses: mshick/add-pr-comment@v2
         with:
-          message: |
+          script: |
             echo $results
