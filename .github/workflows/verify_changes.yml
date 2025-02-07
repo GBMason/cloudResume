@@ -35,7 +35,7 @@ jobs:
           ls -d */
           cd src/
           ls -d */
-          cd /SAM/
+          cd SAM/
           sam deploy --no-execute-changeset --template-file /src/SAM/template.yml --config-file /src/SAM/samconfig.toml --stack-name sam-backend
 
       - name: Post plan to PR
