@@ -1,4 +1,4 @@
-name: Verify Changes
+name: Verify Changes - Publish Plan to PR
 
 on:
   workflow_dispatch:
