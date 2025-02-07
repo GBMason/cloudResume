@@ -36,7 +36,7 @@ jobs:
           cd src/
           ls -d */
           cd SAM/
-          sam deploy --no-execute-changeset --template-file /src/SAM/template.yml --config-file /src/SAM/samconfig.toml --stack-name sam-backend
+          sam deploy --no-execute-changeset --stack-name sam-backend
 
       - name: Post plan to PR
         uses: mshick/add-pr-comment@v2
