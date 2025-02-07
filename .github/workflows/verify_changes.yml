@@ -33,12 +33,10 @@ jobs:
           aws-region: us-east-1
       - run: |
           cd src/SAM
-          sam deploy --no-execute-changeset --stack-name sam-backend
+          $results = sam deploy --no-execute-changeset --stack-name sam-backend
 
       - name: Post plan to PR
         uses: mshick/add-pr-comment@v2
         with:
           message: |
-            **Hello**
-            🌏
-            !
+            $results
