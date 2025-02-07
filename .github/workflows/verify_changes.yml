@@ -34,9 +34,10 @@ jobs:
       - run: |
           cd src/SAM
           results=$(sam deploy --no-execute-changeset --stack-name sam-backend)
+          echo "$results" >> plan.txt
 
       - name: Post plan to PR
         uses: mshick/add-pr-comment@v2
         with:
-          script: |
-            echo $results
+          message-path: |
+            src/SAM/plan.txt
