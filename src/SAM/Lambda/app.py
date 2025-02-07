@@ -29,8 +29,6 @@ def lambda_handler(event, context):
     )
 
     bodycontents = json.dumps(responseGet['Item']['Views'])
-    
-    print("this is a test")
 
     return {
         "statusCode": 200,
