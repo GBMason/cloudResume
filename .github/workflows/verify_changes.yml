@@ -13,7 +13,7 @@ on:
         - warning
         - debug
   pull_request:
-    types: [opened]
+    types: [opened, edited]
     paths:
       - 'src/SAM/**'
 
