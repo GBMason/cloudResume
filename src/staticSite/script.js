@@ -4,7 +4,7 @@ let fetchRes = fetch(
 			res.json()).then(d => {
 				console.log(d.N)
 				let htmlSegment = 
-					"<h2>Views: " + d.N + "</h2>";
+					"<h2>Thanks for visiting! You are the " + d.N + " person to view this page.</h2>";
 					document.getElementById("views").innerHTML = htmlSegment
 			}
 		)
