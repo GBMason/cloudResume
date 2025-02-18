@@ -73,7 +73,13 @@
       background-position:0px;
       border-radius:80%;
       margin:0 auto;
+      left:0;
+      right:0;
       position:relative;
+  }
+
+  img {
+    border-radius:50%
   }
   
   .name-hero h1
