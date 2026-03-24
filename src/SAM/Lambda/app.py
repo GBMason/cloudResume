@@ -30,6 +30,8 @@ def lambda_handler(event, context):
 
     bodycontents = json.dumps(responseGet['Item']['Views'])
 
+    print("Howdy there! This is the response from DynamoDB: " + bodycontents)
+
     return {
         "statusCode": 200,
         "headers": {
